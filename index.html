@@ -10,34 +10,10 @@
             window.open('https://aberturacontapj.cloud.itau.com.br/', '_system');
         }
         
-        const isMobileSafari = ( ( ua ) => ua.match(/iPad/) || ua.match(/iPhone/) )( window.navigator.userAgent );
-        if( isMobileSafari ) {
-            const hyperlinks = document.querySelectorAll( 'a:link' );
-            for( let anchor of hyperlinks ) anchor.addEventListener( 'click', onHyperlinkClickPreventAppOpen );
-        }
-
-        function onHyperlinkClickPreventAppOpen( ev ) {
-            const el = ev.target;
-            if( el.href && ( el.href.startsWith( "http:" ) || ( el.href.startsWith( "https:" ) ) {
-                ev.preventDefault();
-                window.document.location.assign( el.href );
-            }
-        }
-        
-        document.addEventListener( 'click', onDynamicHyperlinkClickPreventAppOpen );
-
-        function onDynamicHyperlinkClickPreventAppOpen ( ev ) {
-            const el = ev.target;
-            el = el.closest( 'a:link' ); // In case the 'click' event was raised by a descendant of an <a>
-            if( !el ) return;
-
-            const fakeEvent = { target: el, preventDefault: ev.preventDefault };
-            onHyperlinkClickPreventAppOpen( fakeEvent );
-        }
     </script>
 </head>
 <body>
     <button onclick="openBrowser()">Open in Browser</button>
-    <a href="https://aberturacontapj.cloud.itau.com.br/">Itau</a>
+    <a href="googlechrome://navigate?url=https://aberturacontapj.cloud.itau.com.br/">Itau</a>
 </body>
 </html>
